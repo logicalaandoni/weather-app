@@ -1,13 +1,15 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { PreloaderComponent } from './components/preloader/preloader.component';
-import { ErrorModalComponent } from './components/error-modal/error-modal.component';
+
+// Components
+import { ErrorModalComponent } from "./components/error-modal/error-modal.component";
+import { PreloaderComponent } from "./components/preloader/preloader.component";
 
 const sharedComponents = [ErrorModalComponent, PreloaderComponent];
 
 @NgModule({
   declarations: [...sharedComponents],
   imports: [CommonModule],
-  exports: []
+  exports: [...sharedComponents]
 })
-export class SharedModule { }
+export class SharedModule {}

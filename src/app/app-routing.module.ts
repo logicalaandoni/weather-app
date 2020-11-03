@@ -4,7 +4,8 @@ import { PageNotFoundComponent } from "./shared/components/page-not-found/page-n
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
-  { path: "", loadChildren: "./location/locations.module#LocationsModule" },
+  //new way of importing lazy loading after angular 9
+  { path: "", loadChildren: () => import('./location/locations.module').then(m => m.LocationsModule) },
   { path: "**", component: PageNotFoundComponent }
 ];
 
@@ -12,6 +13,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
 
 export const routingComponents = [PageNotFoundComponent];
